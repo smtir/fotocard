@@ -1,0 +1,238 @@
+body {
+  background: #fffbe7;
+  font-family: 'Tiro Bangla', serif;
+}
+button,p,h1,h2,h3 {
+  font-family: 'Tiro Bangla', serif !important;
+}
+
+.container {
+  width: 1000px;
+  margin: 32px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 24px 16px 32px 16px;
+  text-align: center;
+  font-family: 'Tiro Bangla', serif;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.yellow {
+  color: #ffd600;
+  font-weight: 700;
+}
+
+.redlish {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.upload-section {
+  margin-bottom: 16px;
+}
+
+.upload-label {
+  display: block;
+  border: 2px dashed #2196f3;
+  border-radius: 12px;
+  padding: 24px 0;
+  background: #f0f8ff;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: border 0.2s;
+}
+.upload-label:hover {
+  border-color: #1976d2;
+}
+.upload-placeholder {
+  color: #888;
+  font-size: 1rem;
+}
+.camera-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+.formats {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
+}
+.preview-img {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.blue-btn {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.blue-btn:hover {
+  background: #1976d2;
+}
+.clear-btn {
+  background: #d32f2f;
+  color: #fff;
+  border: 1px solid #c38a8a;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.error {
+  color: #d32f2f;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+.editor-section {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+.caption-input, .date-input {
+  flex: 1;
+  font-size: 1rem;
+  padding: 8px 10px;
+  border: 1px solid #ffd600;
+  border-radius: 6px;
+  font-family: 'Tiro Bangla', serif;
+}
+.card-preview-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.card-preview {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+  background: #fffbe7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin: 0 auto;
+  display: block;
+  font-family: 'Tiro Bangla', serif;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, #fffbe7, #fffbe7 10px, #ffe082 10px, #ffe082 20px);
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 32px 32px 24px 32px;
+  background: linear-gradient(0deg, rgba(255,214,0,0.92) 80%, rgba(255,255,255,0.0) 100%);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Tiro Bangla', serif;
+}
+.caption {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  font-family: 'Tiro Bangla', serif;
+}
+.date {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-family: 'Tiro Bangla', serif;
+}
+.credit {
+  font-size: 1.1rem;
+  color: #444;
+  font-weight: 400;
+  font-family: 'Tiro Bangla', serif;
+}
+.download-btn {
+  background: #ffd600;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  transition: background 0.2s;
+}
+.download-btn:disabled {
+  background: #ffe082;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.download-btn:hover:not(:disabled) {
+  background: #ffe082;
+}
+.footer {
+  font-size: 0.98rem;
+  color: #888;
+  margin-top: 18px;
+  font-family: 'Tiro Bangla', serif;
+}
+@media (max-width: 1100px) {
+  .container, .card-preview {
+    width: 98vw;
+    height: 98vw;
+    max-width: 98vw;
+    max-height: 98vw;
+  }
+  .caption {
+    font-size: 1.1rem;
+  }
+  .date {
+    font-size: 0.98rem;
+  }
+  .credit {
+    font-size: 0.92rem;
+  }
+}
+@media (max-width: 600px) {
+  .container, .card-preview {
+    width: 100vw;
+    height: 100vw;
+    max-width: 100vw;
+    max-height: 100vw;
+    border-radius: 0;
+  }
+} 
