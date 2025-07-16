@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 import "./App.css";
 import templateImg from './assets/template.png';
 
-const defaultCaption = "সুমন ভাইয়ের জন্য ফটোকার্ড তৈরী করেছে তাওহিদুল ইসলাম রাজীব";
+const defaultCaption = "এখানে লেখা দিন";
 const TEMPLATE_SIZE = 1000;
 const BOX_X = 16; // px
 const BOX_Y = 32; // px
@@ -192,11 +192,22 @@ function App() {
       ctx.restore();
     }
 
-    // Download
+    const dataUrl = canvas.toDataURL();
+    // iOS detection
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (isIOS) {
+      // Open in new tab and show user message
+      window.open(dataUrl, '_blank');
+      alert('iPhone/iPad-এ ডাউনলোড করতে, নতুন ট্যাবে খুলে ছবির উপর ট্যাপ করে ধরে রাখুন এবং "Save Image" বেছে নিন।');
+      return;
+    }
+    // Normal download for other browsers
     const link = document.createElement('a');
-    link.download = 'ahammedpurbarta.png';
-    link.href = canvas.toDataURL();
+    link.download = 'fotocard.png';
+    link.href = dataUrl;
+    document.body.appendChild(link);
     link.click();
+    setTimeout(() => document.body.removeChild(link), 100);
   };
 
   const handleClear = () => {
@@ -207,7 +218,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="title">আহম্মদপুর বার্তা <span className="redlish">ফটোকার্ড</span></h1>
+      <h1 className="title">আহম্মদপুর বার্তা <span className="redlish">ফটোকার্ড সিস্টেম</span></h1>
       <div className="upload-section">
         <label htmlFor="file-upload" className="upload-label" onDrop={handleDrop} onDragOver={e => e.preventDefault()}>
           {image ? (
@@ -215,7 +226,7 @@ function App() {
           ) : (
             <div className="upload-placeholder">
               <span role="img" aria-label="camera" className="camera-icon">📷</span>
-              <div>উপরের নীল বাটনে ক্লিক করে অথবা এখানে ছবি এনে ছেড়ে দিন</div>
+              <div>নিচের নীল বাটনে ক্লিক করে অথবা এখানে ছবি এনে ছেড়ে দিন</div>
               <div className="formats">JPG, PNG, GIF, BMP, WebP ফরম্যাটের ছবিগুলা সাপোর্ট করবে</div>
             </div>
           )}
@@ -230,7 +241,7 @@ function App() {
         </label>
         <div className="button-row">
           <button className="blue-btn" onClick={() => fileInput.current.click()}>ছবি বেছে নিন</button>
-          {image && <button className="clear-btn" onClick={handleClear}>ক্লিয়ার করুন</button>}
+          {image && <button className="clear-btn" onClick={handleClear}>ছবি ক্লিয়ার করুন</button>}
         </div>
         {error && <div className="error">{error}</div>}
       </div>
@@ -261,6 +272,7 @@ function App() {
             style={{ flex: 1, minWidth: 120, fontSize: 18, padding: 8, border: '1px solid #ffd600', borderRadius: 6, fontFamily: "'Tiro Bangla', serif" }}
           />
         </div>
+        <button className="download-btn" onClick={handleDownload} disabled={!image}>ডাউনলোড করুন</button>
       </div>
       <div className="card-preview-wrapper" style={{ position: 'relative', width: TEMPLATE_SIZE, height: TEMPLATE_SIZE }}>
         {/* Uploaded image inside the white box, clipped */}
@@ -357,7 +369,7 @@ function App() {
           </div>
         )}
       </div>
-      <button className="download-btn" onClick={handleDownload} disabled={!image}>ডাউনলোড করুন</button>
+     
       <div className="footer">তৈরী করেছে: <a target="_blank" href="https://www.facebook.com/smtirX">তাওহিদুল ইসলাম রাজীব</a></div>
     </div>
   );

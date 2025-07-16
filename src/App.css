@@ -1,3 +1,7 @@
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background: #fffbe7;
   font-family: 'Tiro Bangla', serif;
@@ -8,13 +12,15 @@ button,p,h1,h2,h3 {
 
 .container {
   width: 1000px;
+  max-width: 100vw;
   margin: 32px auto;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  padding: 24px 16px 32px 16px;
+  padding: 24px 8px 32px 8px;
   text-align: center;
   font-family: 'Tiro Bangla', serif;
+  box-sizing: border-box;
 }
 
 .title {
@@ -73,8 +79,9 @@ button,p,h1,h2,h3 {
 }
 .button-row {
   display: flex;
-  justify-content: center;
   gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 8px;
 }
 .blue-btn {
@@ -109,17 +116,15 @@ button,p,h1,h2,h3 {
 }
 .editor-section {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
-.caption-input, .date-input {
-  flex: 1;
-  font-size: 1rem;
-  padding: 8px 10px;
-  border: 1px solid #ffd600;
-  border-radius: 6px;
-  font-family: 'Tiro Bangla', serif;
+.caption-input, .date-input, .credit-input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 .card-preview-wrapper {
   display: flex;
@@ -137,6 +142,7 @@ button,p,h1,h2,h3 {
   margin: 0 auto;
   display: block;
   font-family: 'Tiro Bangla', serif;
+  box-sizing: border-box;
 }
 .card-img {
   width: 100%;
@@ -211,11 +217,12 @@ button,p,h1,h2,h3 {
   font-family: 'Tiro Bangla', serif;
 }
 @media (max-width: 1100px) {
-  .container, .card-preview {
+  .container, .card-preview-wrapper, .card-preview {
     width: 98vw;
     height: 98vw;
     max-width: 98vw;
     max-height: 98vw;
+    padding: 8px 2vw 24px 2vw;
   }
   .caption {
     font-size: 1.1rem;
@@ -228,11 +235,59 @@ button,p,h1,h2,h3 {
   }
 }
 @media (max-width: 600px) {
-  .container, .card-preview {
-    width: 100vw;
-    height: 100vw;
-    max-width: 100vw;
-    max-height: 100vw;
-    border-radius: 0;
+  html, body {
+    overflow-x: hidden;
+  }
+  .container, .card-preview-wrapper, .card-preview {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    padding: 8px 8px 10px !important;
+    box-sizing: border-box;
+  }
+  .card-preview {
+    aspect-ratio: 1 / 1;
+  }
+  .editor-section, .button-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    padding: 0 4vw;
+  }
+  .caption-input, .date-input, .credit-input {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 0.7rem !important;
+  }
+  .footer {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+  .title {
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+  
+  .upload-label {
+    padding: 15px 10px;
+  }
+  
+  .upload-placeholder, .formats {
+    font-size: 0.7rem;
+  }
+  
+  .blue-btn, .download-btn, .clear-btn {
+    padding: 8px;
+    font-size: 0.7rem;
+    line-height: 1rem;
+  }
+  
+  .card-preview-wrapper {
+    display: none;
   }
 } 
