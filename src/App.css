@@ -242,6 +242,7 @@ button,p,h1,h2,h3 {
     width: 100% !important;
     height: auto !important;
     max-width: 100% !important;
+    max-height: unset !important;
     min-width: 0 !important;
     border-radius: 8px !important;
     margin: 0 !important;
@@ -289,5 +290,6 @@ button,p,h1,h2,h3 {
   
   .card-preview-wrapper {
     display: none;
+    height: 0 !important;
   }
-} 
+}
